@@ -16,10 +16,10 @@ function App() {
     <div className="App">
       <Navbar /> 
       
-      <Route exact path='/' component={QuestionList} />
+      <PrivateRoute exact path='/' component={QuestionList} />
       <Route path='/signin' component={SignIn} />
       <Route path='/signup' component={SignUp} />
-      <Route path='/question/:id'  component={IndividualQuestion} />
+      <PrivateRoute path='/question/:id'  component={IndividualQuestion} />
       {/* <Route path='/question/:id' render={props => (
           <IndividualQuestion {...props}
           questions={props.questions}

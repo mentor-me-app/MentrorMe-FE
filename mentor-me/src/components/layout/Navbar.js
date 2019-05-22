@@ -8,7 +8,7 @@ import { searchQuestion } from '../../actions'
 
 const Navbar = (props) => {
 
-    const page = props.inUserPage ? <UserPage {...props}/> : <FrontPage />
+    const page = props.inUserPage ? <UserPage /> : <FrontPage />
 
     return (
         <nav className='nav-wrapper grey darken-3'>
