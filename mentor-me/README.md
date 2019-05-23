@@ -37,32 +37,26 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+Installation:
+1) yarn create react-app 'name'
+2) yarn install
+3) yarn upgrade
+4) install all dependencies
+a) yarn add material-ui
+b) yarn add redux-thunk react-router-dom react-redux redux axios
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+About the Project:
+Mentor me is for entrepreneurs both novice and experienced to ask questions they have to other entrepreneurs. Whenever a question is asked, the mentor-me broadcast the messages to all the volunteers who have joined to offer help.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project has implemented 
+1) Sign up Page - needs email and password, lastname and firstname is optional
+2) Sign In Page - users can login once they sign up.
+3) Once they are in the page, anyone can ask a question
+4) Once a question is posted, users can see all the questions which are posted.
+5) They can search by the relevant topic pertaining to the business field.
+6) Users have the option to delete question
+7) They also have the option to update a question
+8) Users can click on the question and they can view it in a separate page.
+9) The user can sign out.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Using a mix of Materialize CSS and Material UI for styling.
