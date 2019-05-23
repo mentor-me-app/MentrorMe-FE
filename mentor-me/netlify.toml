@@ -1,4 +1,4 @@
 [build]
- base = "mentor-me"
+ base = "mentor-me/"
  publish = "mentor-me/build"
  command="yarn build"
