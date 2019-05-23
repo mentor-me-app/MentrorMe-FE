@@ -6,12 +6,8 @@ import axios from 'axios'
 const UserPage = (props) => {
 
     const signout = () =>{
-        // localStorage.setItem('token','notoken')
         localStorage.removeItem('token')
-
-        // axios.setHeader('Authorization',null);
         window.location.reload()
-        // props.history.push('/')
         
     }
 

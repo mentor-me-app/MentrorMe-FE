@@ -39,7 +39,7 @@ class CreateQuestion extends React.Component{
     render(){
         return (
             <div className='container'>
-                <form onSubmit={this.handleSubmit} className='white'>
+                <form onSubmit={this.handleSubmit} className='white z-depth-2'>
                     <h5 className='grey-text text-darken-3'>Post Question</h5>
                     <div className='input-field'>
                         <label htmlFor='title'>Topic </label>
@@ -53,7 +53,10 @@ class CreateQuestion extends React.Component{
                     </div>
 
                     <div className='input-field'>
-                        <button className='btn pink lighten-1 z-depth-0'>Post</button>
+                        <button className='btn indigo accent-2'>Post
+                        <i className="material-icons right">
+local_post_office
+</i></button>
                     </div>
                 </form>
             </div>

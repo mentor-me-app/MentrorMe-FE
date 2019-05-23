@@ -33,7 +33,8 @@ const initialState = {
     editingQuestions: false,
     deletingQuestions: false,
     updateQuestion:null,
-    search:''
+    search:'',
+    tabs:['all','Photography','Programming','Small Business','Video Editing']
 }
 
 export const reducer = (state=initialState,action) => {

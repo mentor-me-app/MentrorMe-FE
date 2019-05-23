@@ -3,7 +3,9 @@ import Icon from '@material-ui/core/Icon';
 import {deleteQuestion} from '../../actions'
 import UpdateQuestion from './UpdateQuestion'
 import {connect} from 'react-redux'
-import {Route} from 'react-router-dom'
+import {Route,Link} from 'react-router-dom'
+import moment from 'moment'
+
 
 class EachQuestion extends React.Component{
 
@@ -42,19 +44,24 @@ class EachQuestion extends React.Component{
     
     return(
         <div className='card z-depth-1 project-summary'>
-                <div className='card-content grey-text text-darken-3'>
+                <div className='card-content grey-text text-darken-3 icon-wrapper'>
                     <div className='right'>
-                    <Icon onClick={(event)=>this.updateSubmit(event,this.props.question)}>edit</Icon>
-                    <Icon onClick={(event)=>this.deleteSubmit(event,this.props.question.id)}>delete_forever</Icon>
+                    {/* <Icon onClick={(event)=>this.updateSubmit(event,this.props.question)}>edit</Icon>
+                    <Icon onClick={(event)=>this.deleteSubmit(event,this.props.question.id)}>delete_forever</Icon> */}
+                    <i className="material-icons blue-text crud" onClick={(event)=>this.updateSubmit(event,this.props.question)}>edit</i>
+                    <i className="material-icons red-text crud" onClick={(event)=>this.deleteSubmit(event,this.props.question.id)}>delete</i>
                     </div>
-                    <span className='card-title'>{this.props.question.content}</span>
-                    <p>{this.props.question.topic}</p>
-                    <p className='grey-text'>{this.props.question.user}</p>
+                    <Link to={`/question/${this.props.question.id}`}>
+                    <span className='card-title grey-text text-darken-3'>{this.props.question.content}</span>
+                    </Link>
+                    <p className='card-title grey-text text-darken-3'>{this.props.question.topic}</p>
+                    
+                    {/* <p className='grey-text'>{moment(this.props.question.updated_at,'MMMM Do YYYY, h:mm:ss a').toString()}</p> */}
                     {this.state.editingID && <Route to='/update' render={props => (
                     <UpdateQuestion {...props} question={this.state.activeQuestion} />
                 )} />}
                 </div>
-
+                {/* {moment(this.props.dataProp.timestamp,'MMMM Do YYYY, h:mm:ss a').fromNow()}{this.props.question.updated_at} */}
             </div>
     )
 }

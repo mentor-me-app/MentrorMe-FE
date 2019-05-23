@@ -42,17 +42,31 @@ class QuestionList extends React.Component{
             <div className='row'>
             <ul className='col s12 m6 offset-m1'>
                     <li>
-                <form  className='search-form' onSubmit={this.handleSubmit} >
+                <form  className='search-form z-depth-2' onSubmit={this.handleSubmit} >
 
                     {/* <div className='right'> */}
 
-                        <input type='text' id='search' className='search white'
+                        <input type='text' id='search' className='search white z-depth-2'
                             placeholder='search'
                             onChange={this.handleChange}></input>
                     {/* </div> */}
                 </form>
                 </li>
                 </ul>
+
+                {/* <div className='col s12 m12 l10 offset-l1'>
+            <ul class='tabs'>
+                
+            {this.props.tabs.map(tab => 
+           
+                <li class='tab col s12 m2 l2'>
+                <a>{tab}</a>
+                </li>
+                
+            )}
+            </ul>
+            </div> */}
+
                 <div className='col s12 m6 offset-m1'>
             <ul>
                 {/* <h1>QuestionList</h1> */}
@@ -72,7 +86,8 @@ class QuestionList extends React.Component{
 const mapStateToProps = (state) => ({
     questions:state.questions,
     fetchingQuestions:state.fetchingQuestions,
-    search:state.search
+    search:state.search,
+    tabs:state.tabs
 })
 
 export default connect(

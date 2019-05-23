@@ -44,7 +44,7 @@ export const GET_QUESTION_FAILURE = 'GET_QUESTION_FAILURE'
 
 export const getQuestion = () => dispatch => {
     dispatch({ type:GET_QUESTION_START})
-    axiosWithAuth()
+    return axiosWithAuth()
     .get('https://mentor-me-app-be.herokuapp.com/api/questions')
     .then(res => {
         dispatch({ type:GET_QUESTION_SUCCESS,payload:res.data})
@@ -64,7 +64,7 @@ export const ADD_QUESTION_FAILURE = 'ADD_QUESTION_FAILURE'
 export const addQuestion = (newQuestion) => dispatch => {
   console.log('action addQuestion data ',newQuestion)
   dispatch({ type: ADD_QUESTION_START })
-  return axios
+  return axiosWithAuth()
     .post('https://mentor-me-app-be.herokuapp.com/api/questions', newQuestion)
     .then(res => {
       dispatch({ type: ADD_QUESTION_SUCCESS, payload: res.data.message })
@@ -83,7 +83,7 @@ export const SEARCH_QUESTION_FAILURE = 'SEARCH_QUESTION_FAILURE'
 export const searchQuestion = (search) => dispatch => {
   console.log('action searchQuestion data ',search)
   dispatch({ type: SEARCH_QUESTION_START })
-  return axios
+  return axiosWithAuth()
     .get(`https://mentor-me-app-be.herokuapp.com/api/questions?search=${search}`)
     .then(res => {
       dispatch({ type: SEARCH_QUESTION_SUCCESS, payload: res.data })
@@ -103,7 +103,7 @@ export const DELETE_QUESTION_FAILURE = 'DELETE_QUESTION_FAILURE'
 export const deleteQuestion = (id) => dispatch => {
   console.log('action deleteQuestion data ',id)
   dispatch({ type: DELETE_QUESTION_START })
-  return axios
+  return axiosWithAuth()
     .delete(`https://mentor-me-app-be.herokuapp.com/api/questions/${id}`)
     .then(res => {
       dispatch({ type: DELETE_QUESTION_SUCCESS, payload: res.data })
@@ -123,7 +123,7 @@ export const UPDATE_QUESTION_FAILURE = 'UPDATE_QUESTION_FAILURE'
 export const updateQuestion = (updatedItem) => dispatch => {
   console.log('action updateQuestion data ',updatedItem)
   dispatch({ type: UPDATE_QUESTION_START })
-  return axios
+  return axiosWithAuth()
     .put(`https://mentor-me-app-be.herokuapp.com/api/questions/${updatedItem.id}`,updatedItem)
     .then(res => {
       dispatch({ type: UPDATE_QUESTION_SUCCESS, payload: res.data })

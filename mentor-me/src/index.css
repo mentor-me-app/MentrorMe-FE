@@ -12,10 +12,12 @@ body {
   background: url(/src/imgs/wood.jpg) no-repeat center center fixed;
   background-size: cover;
   background-position: bottom;
-  background-color: #fff59d;
+  background-color: #f5f8fd;
   min-height:100%;
 
 }
+
+/* Colors from the design file: #ffffff - white #5574F7 - dark blue #60C3FF - teal #2B2F3B - black-ish */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -29,16 +31,23 @@ form{
 
 form button, form h5{
   margin:20px 0;
+  /* background-color:#5574F7 */
 }
+
+
 
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=email]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]){
-  border-color: #ec407a;
+  border-color: #536dfe;
   box-shadow:none;
 }
 
-.search .white{
+/* form .search .white{
   padding-left:20px;
-}
+} */
+
+/* button{
+  background-color:#5574F7
+} */

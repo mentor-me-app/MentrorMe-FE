@@ -13,3 +13,15 @@
 /* .search{
   padding-left:20px;
 } */
+
+form .search-form .search{
+  padding-left:30px;
+}
+
+.crud {
+  display: none;
+}
+
+.icon-wrapper:hover .crud{
+  display: inline-block;
+}

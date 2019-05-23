@@ -37,7 +37,7 @@ class SignUp extends React.Component{
     render(){
         return (
             <div className='container'>
-                <form onSubmit={this.handleSubmit} className='white'>
+                <form onSubmit={this.handleSubmit} className='white z-depth-2'>
                     <h5 className='grey-text text-darken-3'>Sign Up</h5>
                     <div className='input-field'>
                         <label htmlFor='email'>Email </label>
@@ -60,7 +60,10 @@ class SignUp extends React.Component{
                     </div>
 
                     <div className='input-field'>
-                        <button className='btn pink lighten-1 z-depth-0'>SIGN UP</button>
+                        <button className='btn indigo accent-2'>SIGN UP
+                        <i class="material-icons right">
+                        arrow_upward
+                        </i></button>
                     </div>
                 </form>
             </div>

@@ -1,21 +1,21 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {login} from '../../actions'
+import { connect } from 'react-redux'
+import { login } from '../../actions'
 
-class SignIn extends React.Component{
-    constructor(){
+class SignIn extends React.Component {
+    constructor() {
         super()
-            this.state = {
-                email:'',
-                password:''
-            
+        this.state = {
+            email: '',
+            password: ''
+
         }
     }
 
-    handleChange = (event)=> {
+    handleChange = (event) => {
         // console.log(event)
         this.setState({
-            [event.target.id]:event.target.value
+            [event.target.id]: event.target.value
         })
     }
 
@@ -23,20 +23,20 @@ class SignIn extends React.Component{
         // console.log(event)
         event.preventDefault();
         // console.log(this.state)
-        console.log('error occured while signing in ',this.props.error)
+        console.log('error occured while signing in ', this.props.error)
         this.props.login(this.state)
-        .then(() => {
-            this.props.history.push('/')
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(() => {
+                this.props.history.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
-    render(){
+    render() {
         return (
             <div className='sign-in container'>
-                <form onSubmit={this.handleSubmit} className='white'>
+                <form onSubmit={this.handleSubmit} className='white z-depth-2'>
                     <h5 className='grey-text text-darken-3'>Sign In</h5>
                     <div className='input-field'>
                         <label htmlFor='email'>Email </label>
@@ -49,10 +49,14 @@ class SignIn extends React.Component{
                     </div>
 
                     <div className='input-field'>
-                        <button className='btn pink lighten-1 z-depth-0'>Login</button>
+                        <button className='btn indigo accent-2'>Login
+                        <i class="material-icons right">
+                                person
+                            </i>
+                        </button>
                     </div>
                     <div className='red-text center'>
-                    {this.props.error? <p>Invalid Credentials.Try Signing In again!</p>:null}
+                        {this.props.error ? <p>   Invalid Credentials.Try Signing In again!</p> : null}
                     </div>
                 </form>
             </div>
@@ -61,10 +65,10 @@ class SignIn extends React.Component{
 }
 
 const mapStateToProps = state => ({
-    isLoggingIn:state.isLoggingIn,
-    error:state.error
+    isLoggingIn: state.isLoggingIn,
+    error: state.error
 })
 
 export default connect(
-    mapStateToProps, {login}
+    mapStateToProps, { login }
 )(SignIn)
