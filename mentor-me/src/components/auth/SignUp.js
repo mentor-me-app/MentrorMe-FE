@@ -1,23 +1,23 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {signup} from '../../actions'
+import { connect } from 'react-redux'
+import { signup } from '../../actions'
 
-class SignUp extends React.Component{
-    constructor(){
+class SignUp extends React.Component {
+    constructor() {
         super()
-            this.state = {
-                email:'',
-                password:'',
-                firstname:'',
-                lastname:''
-            
+        this.state = {
+            email: '',
+            password: '',
+            firstname: '',
+            lastname: ''
+
         }
     }
 
-    handleChange = (event)=> {
+    handleChange = (event) => {
         // console.log(event)
         this.setState({
-            [event.target.id]:event.target.value
+            [event.target.id]: event.target.value
         })
     }
 
@@ -26,15 +26,15 @@ class SignUp extends React.Component{
         event.preventDefault();
         console.log(this.state)
         this.props.signup(this.state)
-        .then(() => {
-            this.props.history.push('/')
-        })
-        .catch(err => {
-            console.log(err)
-        })
+            .then(() => {
+                this.props.history.push('/')
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
-    render(){
+    render() {
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='white z-depth-2'>
@@ -62,7 +62,7 @@ class SignUp extends React.Component{
                     <div className='input-field'>
                         <button className='btn indigo accent-2'>SIGN UP
                         <i class="material-icons right">
-                        arrow_upward
+                                arrow_upward
                         </i></button>
                     </div>
                 </form>
@@ -73,9 +73,9 @@ class SignUp extends React.Component{
 
 
 const mapStateToProps = state => ({
-    isSignedUp:state.isSignedUp
+    isSignedUp: state.isSignedUp
 })
 
 export default connect(
-    mapStateToProps, {signup}
+    mapStateToProps, { signup }
 )(SignUp)

@@ -25,3 +25,9 @@ form .search-form .search{
 .icon-wrapper:hover .crud{
   display: inline-block;
 }
+
+#text:hover{
+  background-color:lightskyblue;
+  color:white;
+  cursor:pointer;
+}

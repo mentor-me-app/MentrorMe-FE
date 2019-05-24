@@ -1,18 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import EachQuestion from './EachQuestion'
-import {getQuestion, searchQuestion} from '../../actions'
-import {Link} from 'react-router-dom'
+import { getQuestion, searchQuestion } from '../../actions'
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
-class QuestionList extends React.Component{
-    constructor(){
+class QuestionList extends React.Component {
+    constructor() {
         super()
         this.state = {
-            search:''
+            search: '',
+            tab: '',
+            newlist: [],
+            isTab: false
+
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.getQuestion();
     }
 
@@ -20,76 +26,98 @@ class QuestionList extends React.Component{
         event.preventDefault()
         console.log(event)
         this.props
-        .searchQuestion(this.state.search)
-        .then(() => this.props.history.push('/'))
-        .catch(err => console.log('err happened in the search submit area', err))
+            .searchQuestion(this.state.search)
+            .then(() => this.props.history.push('/'))
+            .catch(err => console.log('err happened in the search submit area', err))
         this.setState({
-            search:''
+            search: ''
         })
     }
 
-     handleChange = (event) => {
+    handleChange = (event) => {
         console.log(event)
         this.setState({
-        [event.target.id]:event.target.value
-    })
+            [event.target.id]: event.target.value
+        })
     }
 
-    render(){
-        // console.log(this.props.questions)
+    tabHandler = tab => {
+        this.setState({
+            tab: tab
+        })
+
+
+
+    }
+
+    render() {
+
         return (
-            <div className = 'question-list section'>
-            <div className='row'>
-            <ul className='col s12 m6 offset-m1'>
-                    <li>
-                <form  className='search-form z-depth-2' onSubmit={this.handleSubmit} >
+            <div className='question-list section'>
+                <div className='row'>
+                    <ul className='col s12 m6 l9 offset-l1'>
+                        <li>
+                            <form className='search-form z-depth-2' onSubmit={this.handleSubmit} >
 
-                    {/* <div className='right'> */}
 
-                        <input type='text' id='search' className='search white z-depth-2'
-                            placeholder='search'
-                            onChange={this.handleChange}></input>
-                    {/* </div> */}
-                </form>
-                </li>
-                </ul>
 
-                {/* <div className='col s12 m12 l10 offset-l1'>
-            <ul class='tabs'>
-                
-            {this.props.tabs.map(tab => 
-           
-                <li class='tab col s12 m2 l2'>
-                <a>{tab}</a>
-                </li>
-                
-            )}
-            </ul>
-            </div> */}
+                                <input type='text' id='search' className='search white z-depth-2'
+                                    placeholder='search' style={{paddingLeft:10}}
+                                    onChange={this.handleChange}></input>
 
-                <div className='col s12 m6 offset-m1'>
-            <ul>
-                {/* <h1>QuestionList</h1> */}
-            {this.props.questions.map(question => 
-            // <Link to={`/question/${question.id}`}>
-                <EachQuestion question={question} key={question.id}/>
-                // </Link>
-            )}
-            </ul>
-            </div>
-            </div>
+                            </form>
+                        </li>
+                    </ul>
+
+                    <div className='col s12 m6 l9 offset-l1'>
+                        <ul className='tabs'>
+
+                            {this.props.tabs.map(tab =>
+
+                                <li className='tab col s12 m2 l1' style={{width:184}} >
+
+                                    <a className='grey-text text-darken-3 topic' id='text' onClick={() => { this.tabHandler(tab) }}>{tab}</a>
+                                </li>
+
+                            )}
+                        </ul>
+                    </div>
+
+                    
+
+
+
+
+                    <div className='col s12 m6 l9 offset-l1'>
+
+                        <ul>
+
+
+                            {this.state.tab === 'all' ? this.props.questions.map(question =>
+
+                                <EachQuestion question={question} key={question.id} />
+
+                            ) : this.props.questions.filter(question => question.topic === this.state.tab).map(question =>
+
+                                <EachQuestion question={question} key={question.id} />
+
+                            )}
+                        </ul>
+                    </div>
+                </div>
             </div>
         )
+
     }
 }
 
 const mapStateToProps = (state) => ({
-    questions:state.questions,
-    fetchingQuestions:state.fetchingQuestions,
-    search:state.search,
-    tabs:state.tabs
+    questions: state.questions,
+    fetchingQuestions: state.fetchingQuestions,
+    search: state.search,
+    tabs: state.tabs
 })
 
 export default connect(
-    mapStateToProps , {getQuestion,searchQuestion}
-    )(QuestionList)
+    mapStateToProps, { getQuestion, searchQuestion }
+)(QuestionList)

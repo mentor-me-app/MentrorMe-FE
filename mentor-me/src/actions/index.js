@@ -1,21 +1,21 @@
 import axios from 'axios'
-import {axiosWithAuth} from '../axiosWithAuth'
+import { axiosWithAuth } from '../axiosWithAuth'
 export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 
 export const login = creds => dispatch => {
-    dispatch({type:LOGIN_START});
-    return axios
-    .post('https://mentor-me-app-be.herokuapp.com/api/users/login',creds)
+  dispatch({ type: LOGIN_START });
+  return axios
+    .post('https://mentor-me-app-be.herokuapp.com/api/users/login', creds)
     .then(res => {
-        localStorage.setItem('token',res.data.token)
-        dispatch({type:LOGIN_SUCCESS,payload:res.data.token})
-        console.log('login token ',res)
+      localStorage.setItem('token', res.data.token)
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data.token })
+      console.log('login token ', res)
     })
     .catch(err => {
-        dispatch({type:LOGIN_FAILURE,payload:`${err}`})
-        console.log('login error in actions ',err)
+      dispatch({ type: LOGIN_FAILURE, payload: `${err}` })
+      console.log('login error in actions ', err)
     })
 }
 
@@ -24,17 +24,17 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE'
 
 export const signup = creds => dispatch => {
-    dispatch({type:SIGNUP_START});
-    return axios
-    .post('https://mentor-me-app-be.herokuapp.com/api/users/register',creds)
+  dispatch({ type: SIGNUP_START });
+  return axios
+    .post('https://mentor-me-app-be.herokuapp.com/api/users/register', creds)
     .then(res => {
-        localStorage.setItem('token',res.data.token)
-        dispatch({type:SIGNUP_SUCCESS,payload:res.data.token})
-        console.log('signup token ',res)
+      localStorage.setItem('token', res.data.token)
+      dispatch({ type: SIGNUP_SUCCESS, payload: res.data.token })
+      console.log('signup token ', res)
     })
     .catch(err => {
-        dispatch({type:SIGNUP_FAILURE,payload:err})
-        console.log('signin error in actions ',err)
+      dispatch({ type: SIGNUP_FAILURE, payload: err })
+      console.log('signin error in actions ', err)
     })
 }
 
@@ -43,17 +43,17 @@ export const GET_QUESTION_SUCCESS = 'GET_QUESTION_SUCCESS'
 export const GET_QUESTION_FAILURE = 'GET_QUESTION_FAILURE'
 
 export const getQuestion = () => dispatch => {
-    dispatch({ type:GET_QUESTION_START})
-    return axiosWithAuth()
+  dispatch({ type: GET_QUESTION_START })
+  return axiosWithAuth()
     .get('https://mentor-me-app-be.herokuapp.com/api/questions')
     .then(res => {
-        dispatch({ type:GET_QUESTION_SUCCESS,payload:res.data})
-        console.log(res)
-        console.log('get question header info ',res)
+      dispatch({ type: GET_QUESTION_SUCCESS, payload: res.data })
+      console.log(res)
+      console.log('get question header info ', res)
     })
     .catch(err => {
-        dispatch({ type:GET_QUESTION_FAILURE,payload:err})
-        console.log('action get question start error '+err)
+      dispatch({ type: GET_QUESTION_FAILURE, payload: err })
+      console.log('action get question start error ' + err)
     })
 }
 
@@ -62,7 +62,7 @@ export const ADD_QUESTION_SUCCESS = 'ADD_QUESTION_SUCCESS'
 export const ADD_QUESTION_FAILURE = 'ADD_QUESTION_FAILURE'
 
 export const addQuestion = (newQuestion) => dispatch => {
-  console.log('action addQuestion data ',newQuestion)
+  console.log('action addQuestion data ', newQuestion)
   dispatch({ type: ADD_QUESTION_START })
   return axiosWithAuth()
     .post('https://mentor-me-app-be.herokuapp.com/api/questions', newQuestion)
@@ -81,7 +81,7 @@ export const SEARCH_QUESTION_SUCCESS = 'SEARCH_QUESTION_SUCCESS'
 export const SEARCH_QUESTION_FAILURE = 'SEARCH_QUESTION_FAILURE'
 
 export const searchQuestion = (search) => dispatch => {
-  console.log('action searchQuestion data ',search)
+  console.log('action searchQuestion data ', search)
   dispatch({ type: SEARCH_QUESTION_START })
   return axiosWithAuth()
     .get(`https://mentor-me-app-be.herokuapp.com/api/questions?search=${search}`)
@@ -101,7 +101,7 @@ export const DELETE_QUESTION_SUCCESS = 'DELETE_QUESTION_SUCCESS'
 export const DELETE_QUESTION_FAILURE = 'DELETE_QUESTION_FAILURE'
 
 export const deleteQuestion = (id) => dispatch => {
-  console.log('action deleteQuestion data ',id)
+  console.log('action deleteQuestion data ', id)
   dispatch({ type: DELETE_QUESTION_START })
   return axiosWithAuth()
     .delete(`https://mentor-me-app-be.herokuapp.com/api/questions/${id}`)
@@ -121,10 +121,10 @@ export const UPDATE_QUESTION_SUCCESS = 'UPDATE_QUESTION_SUCCESS'
 export const UPDATE_QUESTION_FAILURE = 'UPDATE_QUESTION_FAILURE'
 
 export const updateQuestion = (updatedItem) => dispatch => {
-  console.log('action updateQuestion data ',updatedItem)
+  console.log('action updateQuestion data ', updatedItem)
   dispatch({ type: UPDATE_QUESTION_START })
   return axiosWithAuth()
-    .put(`https://mentor-me-app-be.herokuapp.com/api/questions/${updatedItem.id}`,updatedItem)
+    .put(`https://mentor-me-app-be.herokuapp.com/api/questions/${updatedItem.id}`, updatedItem)
     .then(res => {
       dispatch({ type: UPDATE_QUESTION_SUCCESS, payload: res.data })
       console.log('update Question ', res.data)
@@ -134,3 +134,4 @@ export const updateQuestion = (updatedItem) => dispatch => {
       console.log('update Question error: ', err.response)
     })
 }
+

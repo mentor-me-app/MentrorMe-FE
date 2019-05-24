@@ -1,22 +1,22 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {addQuestion} from '../../actions'
+import { connect } from 'react-redux'
+import { addQuestion } from '../../actions'
 
-class CreateQuestion extends React.Component{
-    constructor(){
+class CreateQuestion extends React.Component {
+    constructor() {
         super()
-            this.state = {
-                topic:'',
-                content:'',
-                user_id:1
-            
+        this.state = {
+            topic: '',
+            content: '',
+            user_id: 1
+
         }
     }
 
-    handleChange = (event)=> {
+    handleChange = (event) => {
         // console.log(event)
         this.setState({
-            [event.target.id]:event.target.value
+            [event.target.id]: event.target.value
         })
     }
 
@@ -25,18 +25,18 @@ class CreateQuestion extends React.Component{
         event.preventDefault();
         console.log(this.state)
         this.props
-        .addQuestion(this.state)
-        .then(() => this.props.history.push('/'))
-        .catch(err => {
-            console.log('error while adding question ' , err)
-        })
+            .addQuestion(this.state)
+            .then(() => this.props.history.push('/'))
+            .catch(err => {
+                console.log('error while adding question ', err)
+            })
         this.setState({
-            title:'',
-            content:''
+            title: '',
+            content: ''
         })
     }
 
-    render(){
+    render() {
         return (
             <div className='container'>
                 <form onSubmit={this.handleSubmit} className='white z-depth-2'>
@@ -48,14 +48,14 @@ class CreateQuestion extends React.Component{
 
                     <div className='input-field'>
                         <label htmlFor='content'>Ask your question</label>
-                        <textarea  id='content' className='materialize-textarea' onChange={this.handleChange}></textarea>
-                        
+                        <textarea id='content' className='materialize-textarea' onChange={this.handleChange}></textarea>
+
                     </div>
 
                     <div className='input-field'>
                         <button className='btn indigo accent-2'>Post
                         <i className="material-icons right">
-local_post_office
+                                local_post_office
 </i></button>
                     </div>
                 </form>
@@ -65,9 +65,9 @@ local_post_office
 }
 
 const mapStateToProps = (state) => ({
-    addingQuestions:state.addingQuestions,
-    error:state.error
+    addingQuestions: state.addingQuestions,
+    error: state.error
 })
 export default connect(
-    mapStateToProps, {addQuestion}
+    mapStateToProps, { addQuestion }
 )(CreateQuestion)
